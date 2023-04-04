@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "Copy as Plain Text",
+    "description": "Copy text from a webpage as plain text",
+    "version": "1.0.0",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "src/content.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "background": {
+        "service_worker": "src/background.js"
+    },
+    "permissions": [
+        "contextMenus"
+    ],
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "icons": {
+        "16": "icons/plane-16.png",
+        "64": "icons/plane-64.png",
+        "128": "icons/plane-128.png"
+    }
+}

@@ -1,2 +1,3 @@
-# CopyAsPlainText
-Simple chrome extension that helps to copy as plain text
+# Plane Text
+
+Copy text from a webpage without different styles and in comfortable-to-paste format.
