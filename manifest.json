@@ -1,7 +1,8 @@
 {
     "manifest_version": 3,
     "name": "Copy as Plain Text",
-    "description": "Copy text from a webpage as plain text",
+    "author": "NightStranger",
+    "description": "Copy text from a webpage as plain text using Ctrl + C or button from context menu",
     "version": "1.0.0",
     "content_scripts": [
         {
@@ -18,14 +19,20 @@
         "service_worker": "src/background.js"
     },
     "permissions": [
-        "contextMenus"
+        "storage",
+        "contextMenus",
+        "clipboardWrite"
     ],
     "host_permissions": [
         "*://*/*"
     ],
     "icons": {
-        "16": "icons/plane-16.png",
-        "64": "icons/plane-64.png",
-        "128": "icons/plane-128.png"
+        "16": "icons/logo_16.png",
+        "64": "icons/logo_64.png",
+        "128": "icons/logo_128.png"
+    },
+    "action": {
+        "default_icon": "icons/logo_128.png",
+        "default_popup": "src/popup.html"
     }
 }
