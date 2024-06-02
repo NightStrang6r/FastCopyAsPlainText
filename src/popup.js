@@ -5,7 +5,7 @@ for(let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener("input", saveSettings);
 }
 
-function saveSettings(el) {
+function saveSettings() {
     let settings = {};
 
     for(let i = 0; i < checkboxes.length; i++) {
@@ -18,12 +18,22 @@ function saveSettings(el) {
     });
 }
 
-function restoreSettings(){
+function restoreSettings() {
     try {
         chrome.storage.local.get(['settings'], function(result) {
-            if(!result.settings) return;
+            console.log(result.settings);
+            let settings = {};
+            if(!result.settings) {
+                settings['ctrl-c'] = true;
+                settings['alt-c'] = true;
+                settings['show-notification'] = true;
+                settings['context-menu'] = true;
+            } else {
+                settings = result.settings;
+            }
 
-            let settings = result.settings;
+            console.log(settings);
+             
             for(let i = 0; i < checkboxes.length; i++){
                 if(settings[`${checkboxes[i].name}`] == "true" || settings[`${checkboxes[i].name}`] == true){
                     checkboxes[i].checked = true;
