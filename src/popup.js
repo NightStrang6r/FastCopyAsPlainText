@@ -21,11 +21,10 @@ function saveSettings() {
 function restoreSettings() {
     try {
         chrome.storage.local.get(['settings'], function(result) {
-            console.log(result.settings);
             let settings = {};
             if(!result.settings) {
                 settings['ctrl-c'] = true;
-                settings['alt-c'] = true;
+                settings['alt-x'] = true;
                 settings['show-notification'] = true;
                 settings['context-menu'] = true;
             } else {

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>XDL</title>
+    <title>Fast Copy as Plain Text</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <style>
     html,
@@ -12,6 +12,7 @@
         margin: 0;
         padding: 0;
         width: 450px;
+        background-color: #ffffff;
     }
     h1 {
         font-family: 'Menlo', monospace;
@@ -32,9 +33,11 @@
     }
 
     .modal-header {
-        align-items: center;
+        display: flex;
         border-bottom: 0.5px solid #dadada;
         height: 50px;
+        align-items: center;
+        justify-content: center;
     }
 
     .modal-content {
@@ -73,16 +76,19 @@
     }
 
     .logo {
+        display: flex;
+        align-items: center;
         cursor: default;
         padding: 16px;
     }
 
     .logo-icon {
-        vertical-align: text-bottom;
+        margin-right: 10px;
     }
 
     .header-text {
         cursor: default;
+        margin-left: 8px;
         color: #444;
         font-size: 18px;
     }
@@ -313,7 +319,7 @@
     <div class="modal-header">
         <h1 class="logo">
             <img class="logo-icon" src="../icons/logo_128.png">
-            <span>Fast Copy As Plain Text</span>
+            <span>Fast Copy as Plain Text</span>
             <span class="header-text">v1.1</span>
         </h1>
     </div>
@@ -324,8 +330,8 @@
                 <label for="ctrl-c">Ctrl + C copy as plain text</label>
             </div>
             <div class="checkbox" style="margin-top: 0.5em;">
-                <input class="custom-checkbox" type="checkbox" id="ctrl-c" name="alt-c" value="">
-                <label for="ctrl-c">Alt + C as plain text</label>
+                <input class="custom-checkbox" type="checkbox" id="alt-x" name="alt-x" value="">
+                <label for="alt-x">Alt + X to clear formatting from clipboard</label>
             </div>
             <div class="checkbox" style="margin-top: 0.5em;">
                 <input class="custom-checkbox" type="checkbox" id="show-notification" name="show-notification" value="">
