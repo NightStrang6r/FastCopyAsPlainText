@@ -6,9 +6,9 @@
     ⚡️ Simple Chrome Extension that helps to copy as plain text using Ctrl + C or button in context menu ⚡️
 </h4>
 
-![Fast Copy as Plain Text](https://i.ibb.co/HYPqQDs/2024-06-08-182809853.png "Fast Copy as Plain Text")
-
-<br />
+<p align="center">
+  <img src="https://i.ibb.co/HYPqQDs/2024-06-08-182809853.png" alt="Fast Copy as Plain Text"/>
+</p>
 
 ## 💫 **Features**
 
@@ -20,7 +20,7 @@
 
 ## ☑️ **Installation**
 
-Soon
+**Soon**
 
 ## 🎉 **Like it? Star it!**
 
