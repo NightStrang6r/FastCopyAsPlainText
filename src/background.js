@@ -1,29 +1,26 @@
 console.log(`CopyAsPlainText service started.`);
 
-const contextMenu = {
-    "id": "copyAsPlainText",
-    "title": "Copy as Plain Text",
-    "contexts": ["selection"]
-};
-
 async function main() {
     const settings = await getSettings();
 
-    if (settings['context-menu']) {
-        try {
-            await chrome.contextMenus.removeAll();
-            await chrome.contextMenus.create(contextMenu);
-        } catch (err) {
-            console.log(err);
-        }
+    if (settings && settings['context-menu']) {
+        await removeContextMenuButton();
+        await createContextMenuButton();
     }
 }
 
 main();
+chrome.runtime.onInstalled.addListener(async () => await injectScript());
 chrome.contextMenus.onClicked.addListener(async (itemData) => await onContextMenuItemClicked(itemData));
 chrome.commands.onCommand.addListener(async (command) => await onCommand(command));
 
 async function getSettings() {
+    const defaultSettings = {
+        'ctrl-c': true,
+        'alt-c': true,
+        'show-notification': true,
+        'context-menu': true
+    };
     let settings = {};
     try {
         settings = await new Promise((resolve) => {
@@ -60,6 +57,50 @@ async function onCommand(command) {
             break;
         default:
             console.log(`Command ${command} not found.`);
+    }
+}
+
+async function injectScript() {
+    try {
+        const tabs = await chrome.tabs.query({});
+
+        for (let tab of tabs) {
+            try {
+                if (!/^https?/.test(tab.url)) continue;
+
+                await chrome.scripting.executeScript({
+                    target: { tabId: tab.id },
+                    files: ['src/content.js']
+                });
+                console.log(`Script injected to tab ${tab.id}.`);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function createContextMenuButton() {
+    try {
+        const contextMenu = {
+            "id": "copyAsPlainText",
+            "title": "Copy as Plain Text",
+            "contexts": ["selection"]
+        };
+
+        await chrome.contextMenus.create(contextMenu);
+    } catch (err) { 
+        console.log(err);
+    }
+}
+
+async function removeContextMenuButton() {
+    try {
+        await chrome.contextMenus.removeAll();
+    } catch (err) {
+        console.log(err);
     }
 }
 

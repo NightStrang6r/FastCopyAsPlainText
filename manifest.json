@@ -3,7 +3,7 @@
     "name": "Fast Copy as Plain Text",
     "author": "NightStranger",
     "description": "Copy text from a webpage as plain text very fast using Ctrl + C or button from context menu",
-    "version": "1.2.0",
+    "version": "1.2",
     "content_scripts": [
         {
             "matches": [
@@ -21,7 +21,9 @@
     "permissions": [
         "storage",
         "contextMenus",
-        "clipboardWrite"
+        "clipboardWrite",
+        "tabs",
+        "scripting"
     ],
     "host_permissions": [
         "*://*/*"
@@ -38,9 +40,9 @@
     "commands": {
         "clearText": {
             "suggested_key": {
-                "default": "Alt+X"
+                "default": "Alt+C"
             },
-            "description": "clear formatting from clipboard"
+            "description": "Clear formatting from clipboard"
         }
     }
 }

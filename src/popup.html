@@ -46,7 +46,6 @@
 
     .modal-icons {
         border-top: 0.5px solid #dadada;
-        height: 50px;
         width: 100%;
     }
 
@@ -82,12 +81,19 @@
         padding: 16px;
     }
 
+    .hover-logo {
+        cursor: pointer;
+    }
+
+    .hover-logo:hover {
+        opacity: 0.9;
+    }
+
     .logo-icon {
         margin-right: 10px;
     }
 
     .header-text {
-        cursor: default;
         margin-left: 8px;
         color: #444;
         font-size: 18px;
@@ -95,8 +101,9 @@
 
     .flex-container {
         display: flex;
-        justify-content: space-between;
         padding: 10px 22px;
+        justify-content: left;
+        align-items: center;
     }
 
     .flex {
@@ -169,6 +176,14 @@
 
     .checkbox {
         margin-bottom: 0.5em;
+    }
+
+    .checkbox:hover {
+        opacity: 0.9;
+    }
+
+    .checkbox label {
+        cursor: pointer;
     }
 
     .paragraph {
@@ -313,14 +328,32 @@
         top: 0;
         transform: translateY(-50%) scale(0.75);
     }
+
+    .github-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 7px;
+    }
+
+    .github-text {
+        margin-bottom: 1px;
+    }
+
+    .hover-button {
+        cursor: pointer;
+    }
+
+    .hover-button:hover {
+        opacity: 0.7;
+    }
     </style>
 </head>
 <body>
     <div class="modal-header">
-        <h1 class="logo">
+        <h1 class="logo hover-logo" id="logo-button">
             <img class="logo-icon" src="../icons/logo_128.png">
             <span>Fast Copy as Plain Text</span>
-            <span class="header-text">v1.1</span>
+            <span class="header-text">v1.2</span>
         </h1>
     </div>
     <div id="main" class="modal-content">
@@ -330,8 +363,8 @@
                 <label for="ctrl-c">Ctrl + C copy as plain text</label>
             </div>
             <div class="checkbox" style="margin-top: 0.5em;">
-                <input class="custom-checkbox" type="checkbox" id="alt-x" name="alt-x" value="">
-                <label for="alt-x">Alt + X to clear formatting from clipboard</label>
+                <input class="custom-checkbox" type="checkbox" id="alt-c" name="alt-c" value="">
+                <label for="alt-c">Alt + C to clear formatting from clipboard</label>
             </div>
             <div class="checkbox" style="margin-top: 0.5em;">
                 <input class="custom-checkbox" type="checkbox" id="show-notification" name="show-notification" value="">
@@ -342,6 +375,14 @@
                 <label for="context-menu">Add context menu button</label>
             </div>
         </p>
+    </div>
+    <div class="modal-icons">
+        <div class="flex-container hover-button" id="github-button">
+            <img class="github-icon" src="../icons/github_logo.png" />
+            <div class="github-text">
+                By NightStranger
+            </div>
+        </div>
     </div>
     <script type="text/javascript" src="popup.js"></script>
 </body>

@@ -1,17 +1,18 @@
 console.log('[CopyAsPlainText] Loaded.');
 
-const defaultSettings = {
-    'ctrl-c': true,
-    'alt-x': true,
-    'show-notification': true,
-    'context-menu': true
-};
-
 document.addEventListener('copy', async (e) => await onCopyEvent(e));
 chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => await onMessage(request, sender, sendResponse));
 
 async function getSettings() {
+    const defaultSettings = {
+        'ctrl-c': true,
+        'alt-c': true,
+        'show-notification': true,
+        'context-menu': true
+    };
+
     let settings = {};
+    
     try {
         settings = await new Promise((resolve) => {
             chrome.storage.local.get(['settings'], function(result) {
@@ -35,17 +36,11 @@ async function getSettings() {
 async function onMessage(request, sender, sendResponse) {
     const settings = await getSettings();
 
-    if (request.message === "copy") {
-        if (request.type === "contextMenu") {
-            await copy(settings);
-        }
-
-        if (request.type === "command" && settings['alt-x']) {
-            await copy(settings);
-        }
+    if (request.message === "copy" && request.type === "contextMenu") {
+        await copy(settings);
     }
 
-    if (request.message === "clearCopiedText") {
+    if (request.message === "clearCopiedText" && settings['alt-c']) {
         await clearCopiedText();
     }
 
