@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Fast Copy as Plain Text",
     "author": "NightStranger",
-    "description": "Copy text from a webpage as plain text very fast using Ctrl + C or button from context menu",
+    "description": "⚡️ Simple Extension that helps to copy as plain text using Ctrl + C or button in context menu ⚡️",
     "version": "1.2",
     "content_scripts": [
         {
