@@ -20,7 +20,10 @@
 
 ## ☑️ **Installation**
 
-**Soon**
+<a href="https://chromewebstore.google.com/detail/fast-copy-as-plain-text/pekakdaljphpfhkplbpdhejgijiimogi" target="_blank">
+  <img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/HRs9MPufa1J1h5glNhut.png" alt="Install Fast Copy as Plain Text" width="200"/>
+</a>
+
 
 ## 🎉 **Like it? Star it!**
 
